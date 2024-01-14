@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XeonSky Minesweeper</title>
+    <link rel="stylesheet" href="./css/control.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" id="pcolor" href="" />
+    <script src="./js/jquery-3.7.0.min.js"></script>
+    <script src="./js/jquery.cookie.min.js"></script>
+    <script src="./js/config_proxy.js"></script>
+    <script src="./js/minesweeper/newgame.js"></script>
+    <script src="./js/minesweeper/creatmap.js"></script> 
+    <script src="./js/minesweeper/playerclick.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+
+<body class="color-light">
+    <div class="xeonsky-navbar">
+        <div class="title">
+            Minesweeper
+        </div>
+        <div id="lighter">
+            开/关灯
+        </div>
+        <div id="active-index" class="more">
+            More
+        </div>
+    </div>
+    <div id="game-minesweeper">
+        <div class="minesweeper-renderer">
+            <div id="minesweeper-alert">
+                <div class="title">
+                    <div id="emo-title"></div>
+                    <div style="font-size: 14px;">
+                        得分: <span id="emo-coin"></span>
+                    </div>
+                    <div class="winner-buttom">
+                        <div class="item" id="renew-mines">重新开始</div>
+                        <div class="item" id="renew-set">设置</div>
+                    </div>
+                    <div class="winner-buttom">
+                        <div class="item" id="renew-cmines">重开地图</div>
+                        <div class="item" id="renew-duck">RFMode</div>
+                    </div>
+                </div>
+            </div>
+            <div id="minesweeper-setting">
+                <div class="content">
+                    <div class="setwindow">
+                        <div class="title">设置</div>
+                        <div class="input">
+                            <label>宽度</label>
+                            <input id="mine-width">
+                        </div>
+                        <div class="input">
+                            <label>高度</label>
+                            <input id="mine-height">
+                        </div>
+                        <div class="input">
+                            <label>雷数</label>
+                            <input id="mine-count">
+                        </div>
+                        <div class="input">
+                            <label>联网服务器</label>
+                            <input id="mine-server">
+                        </div>
+                    </div>
+                    <div class="save">
+                        <div class="flex"></div>
+                        <div class="item" id="hide_set">返回</div>
+                        <div class="item" id="mine_save">保存并刷新</div>
+                    </div>
+                </div>
+            </div>
+            <div id="minesweeper-renderer"></div>
+        </div>
+        <div id="minesweeper-index">
+            <div class="card">
+                <div class="info">
+                    <div class="title">地雷数量</div>
+                    <div class="about">场上的地雷数量</div>
+                </div>
+                <div class="index" id="index-miner">0</div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="title">旗子数量</div>
+                    <div class="about">场上的旗子数量</div>
+                </div>
+                <div class="index" id="index-flag">0</div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="title">清理区域</div>
+                    <div class="about">已经清理过的区域</div>
+                </div>
+                <div class="index" id="index-click">0</div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="title">当前得分</div>
+                    <div class="about">目前获得的积分</div>
+                </div>
+                <div class="index" id="index-coin">0</div>
+            </div>
+            <div class="card">
+                <div class="info">
+                    <div class="title">最高得分</div>
+                    <div class="about">历史获得的最高积分</div>
+                </div>
+                <div class="index" id="index-mcoin">0</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

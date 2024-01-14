@@ -1,0 +1,14 @@
+:root {
+    --mine_block: 32px;
+    --dc_color: #1f1f1f;
+    --bc_color: #2f2f2f;
+    --lc_color: #3f3f3f;
+    --li_color: #5f5f5f;
+    --text_color: #ffffff
+}
+
+@media (max-width:600px) {
+    :root {
+        --mine_block: 36px;
+    }
+}

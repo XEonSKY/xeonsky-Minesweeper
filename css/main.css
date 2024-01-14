@@ -1,0 +1,316 @@
+body {
+    margin: 0px;
+    overflow: hidden;
+    background-color: #0f0f0f;
+}
+
+.xeonsky-navbar {
+    height: 28px;
+    line-height: 28px;
+    padding: 0px 8px;
+    color: var(--text_color);
+    font-size: 12px;
+    user-select: none;
+    display: flex;
+    border-bottom: 1px solid var(--dc_color);
+    background-color: var(--bc_color);
+}
+
+.xeonsky-navbar .title {
+    flex: 1;
+}
+
+.xeonsky-navbar .more {
+    display: none;
+}
+
+
+#game-minesweeper {
+    height: calc(100vh - 29px);
+    display: flex;
+}
+
+.minesweeper-renderer {
+    padding: 8px;
+    position: relative;
+    display: flex;
+    width: calc(100% - 240px - 16px);
+    height: calc(100% - 16px);
+    background-color: var(--dc_color);
+}
+
+#minesweeper-index {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 240px;
+    color: var(--text_color);
+    transition: all 0.1s;
+    background-color: var(--bc_color);
+}
+
+
+@media (max-width:800px) {
+    #minesweeper-index {
+        flex-shrink: 0;
+        max-width: 0px;
+        left: 0px;
+        height: calc(100% - 29px);
+        overflow: hidden;
+        position: absolute;
+        color: var(--text_color);
+        overflow: hidden;
+        background-color: var(--bc_color);
+    }
+
+    .xeonsky-navbar .more {
+        display: block;
+    }
+
+    #minesweeper-index.active {
+        max-width: 100% !important;
+    }
+
+    .minesweeper-renderer {
+        padding: 8px;
+        position: relative;
+        width: calc(100% - 16px);
+        height: calc(100% - 16px);
+        background-color: var(--dc_color);
+    }
+}
+
+#minesweeper-index .card {
+    margin: 8px;
+    padding: 8px;
+    display: flex;
+    border-radius: 8px;
+    background-color: var(--lc_color);
+    overflow: hidden;
+    box-shadow: 0px 0px 4px var(--dc_color);
+}
+
+#minesweeper-index .card .info {
+    height: 36px;
+    user-select: none;
+    flex: 1;
+}
+
+#minesweeper-index .card .index {
+    min-width: 36px;
+    height: 36px;
+    padding: 0px 4px;
+    text-align: right;
+    font-size: 20px;
+    line-height: 36px;
+}
+
+#minesweeper-index .card .info .title {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+#minesweeper-index .card .info .about {
+    font-size: 12px;
+    color: var(--text_color);
+    line-height: 16px;
+}
+
+.minesweeper-renderer #minesweeper-alert {
+    width: 100%;
+    height: 100%;
+    margin: -8px;
+    display: none;
+    color: #ffffff;
+    background-color: #00000080;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    position: absolute;
+}
+
+.minesweeper-renderer #minesweeper-alert .title {
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    font-size: 32px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+#minesweeper-renderer {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #535353;
+}
+
+::-webkit-scrollbar-track {
+    background: #ededed;
+}
+
+.mine_row {
+    display: none;
+}
+
+.mine_row.show {
+    display: flex;
+}
+
+.mine_tile {
+    flex-shrink: 0;
+    width: var(--mine_block);
+    height: var(--mine_block);
+    margin: 1px;
+    overflow: hidden;
+}
+
+.mine_blank {
+    width: calc(var(--mine_block) - 4px);
+    height: calc(var(--mine_block) - 4px);
+    border-radius: 2px;
+    transition: all 0.1s;
+    border: 2px solid var(--li_color);
+    background-color: var(--lc_color);
+}
+
+.mine_mine {
+    width: var(--mine_block);
+    height: var(--mine_block);
+    color: var(--text_color);
+    font-size: 18px;
+    text-align: center;
+    line-height: var(--mine_block);
+    transition: all 0.1s;
+    user-select: none;
+    background-color: var(--bc_color);
+}
+
+.mine_blank:hover {
+    border: 2px solid #7C7C7C;
+}
+
+.mine_flag_icon {
+    background-size: cover;
+    background-image: url('../images/icon/flag.svg');
+}
+
+.winner-buttom {
+    display: flex;
+}
+
+.winner-buttom .item {
+    font-size: 14px;
+    padding: 8px;
+    width: 60px;
+    margin: 4px;
+    user-select: none;
+    border-radius: 4px;
+    background-color: #dcdcdc20;
+    text-align: center;
+}
+
+.winner-buttom .item:hover {
+    background-color: #aaaaaa20;
+}
+
+#minesweeper-setting {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: #0e0e0e80;
+    position: absolute;
+}
+
+#minesweeper-setting.active {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #0e0e0e80;
+    position: absolute;
+}
+
+#minesweeper-setting .content {
+    width: 100%;
+    height: 100%;
+    max-width: 420px;
+    max-height: 300px;
+    margin: auto;
+    border-radius: 8px;
+    background-color: var(--bc_color);
+    border: 1px solid var(--lc_color);
+}
+
+#minesweeper-setting .content .setwindow {
+    height: calc(100% - 41px);
+}
+
+#minesweeper-setting .content .setwindow .title {
+    font-size: 20px;
+    padding: 4px 12px;
+    color: var(--text_color);
+    line-height: 36px;
+}
+
+#minesweeper-setting .content .setwindow .input {
+    font-size: 12px;
+    padding: 0px 12px;
+    color: var(--text_color);
+}
+
+#minesweeper-setting .content .setwindow .input label {
+    display: block;
+    line-height: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#minesweeper-setting .content .setwindow .input input {
+    display: block;
+    outline: none;
+    padding: 4px;
+    width: calc(100% - 16px);
+    max-width: 240px;
+    color: var(--text_color);
+    background-color: transparent;
+}
+
+#minesweeper-setting .content .save {
+    border-top: 1px solid var(--lc_color);
+    height: 40px;
+    display: flex;
+    overflow: auto;
+}
+
+#minesweeper-setting .content .save .flex {
+    flex: 1;
+}
+
+#minesweeper-setting .content .save .item {
+    width: 70px;
+    margin: 4px;
+    user-select: none;
+    font-size: 14px;
+    color: var(--text_color);
+    border-radius: 6px;
+    padding: 8px 8px;
+    line-height: 16px;
+    text-align: center;
+    background-color: #ffffff40;
+}
+
+#minesweeper-setting .content .save .item:hover {
+    background-color: #ffffff20;
+}
