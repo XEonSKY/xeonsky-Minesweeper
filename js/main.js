@@ -1,11 +1,5 @@
 let mines = Object;
-let setting = $.cookie('minesweeper-setting');
-try {
-    setting = JSON.parse(setting);
-} catch (error) {
-    setting = {};
-    $.cookie('minesweeper-setting', JSON.stringify(setting), { expires: 365, path: '/' });
-}
+let setting = save.getItem("config") || {};
 if (!setting.width) {
     setting.width = 12;
 }
@@ -18,15 +12,14 @@ if (!setting.count) {
 if (!setting.server) {
     setting.server = 'http://game.xeonsky.top/minesweeper/';
 }
-$.cookie('minesweeper-setting', JSON.stringify(setting), { expires: 365, path: '/' });
 $(document).ready(function () {
     pcolor();
     $("#lighter").click(function () {
-        if ($.cookie('minesweeper-pcolor') == 'true') {
-            $.cookie('minesweeper-pcolor', 'false', { expires: 365, path: '/' });
+        if (save.getItem('dark')) {
+            save.getItem('dark', false);
             pcolor();
-        }else{
-            $.cookie('minesweeper-pcolor', 'true', { expires: 365, path: '/' });
+        } else {
+            save.getItem('dark', true);
             pcolor();
         }
     });
@@ -48,7 +41,7 @@ $(document).ready(function () {
         setting.height = $("#mine-height").val();
         setting.count = $("#mine-count").val();
         setting.server = $("#mine-server").val();
-        $.cookie('minesweeper-setting', JSON.stringify(setting), { expires: 365, path: '/' });
+        save.getItem("config", setting);
         mines = new minesweeper(setting.width, setting.height, setting.count);
         $("#minesweeper-setting").toggleClass("active");
         $("#minesweeper-alert").fadeOut();
@@ -84,9 +77,9 @@ $(document).ready(function () {
     });
 });
 function pcolor() {
-    if ($.cookie('minesweeper-pcolor') == 'true') {
+    if (save.getItem('dark')) {
         $("#pcolor").attr("href", "./css/light.css");
-    }else{
+    } else {
         $("#pcolor").attr("href", "");
     }
 }

@@ -10,10 +10,10 @@ class minesweeper_playerclick {
         this.index_dblclick = 0;
         this.index_coin = 0;
         this.win = false;
-        if (!$.cookie('minesweeper-maxcoin')) {
-            $.cookie('minesweeper-maxcoin', 0, { expires: 365, path: '/' });
+        if (!save.getItem('maxcoin')) {
+            save.setItem('maxcoin', 0)
         }
-        this.index_mcoin = $.cookie('minesweeper-maxcoin');
+        this.index_mcoin = save.getItem('maxcoin');
         this.first = true;
     }
     has_mines(x, y) {
@@ -103,8 +103,8 @@ class minesweeper_playerclick {
                         $("#minesweeper-index #index-click").text(this.index_click);
                         $("#minesweeper-index #index-coin").text(this.index_coin);
                         $("#emo-coin").text(this.index_coin);
-                        if ($.cookie('minesweeper-maxcoin') < this.index_coin) {
-                            $.cookie('minesweeper-maxcoin', this.index_coin, { expires: 365, path: '/' });
+                        if (save.getItem('maxcoin') < this.index_coin) {
+                            save.setItem('maxcoin', this.index_coin)
                         }
                         if (this.width * this.height - this.index_click == this.mines.length) {
                             this.win = true;
